@@ -8,7 +8,8 @@ import http.client
 import json
 from openai import OpenAI, APIConnectionError, APIError
 
-app = Flask(__name__)
+# Set template_folder to the root directory
+app = Flask(__name__, template_folder='.')
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
