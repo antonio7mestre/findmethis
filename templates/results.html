@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Me This</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0066FF;
+            --secondary-color: #00FF66;
+            --accent-color: #FF66FF;
+            --text-color: #FFFFFF;
+            --background-color: #000000;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--background-color);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 0 var(--primary-color);
+            letter-spacing: 2px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .keyframe-container {
+            flex: 0 0 40%;
+            aspect-ratio: 9 / 16;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        .keyframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .keyframe:hover {
+            transform: scale(1.05);
+        }
+
+        .link-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .link-preview {
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(255,255,255,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .link-preview:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+        }
+
+        .link-preview h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--background-color);
+            margin-bottom: 15px;
+        }
+
+        .shop-now-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--background-color);
+        }
+
+        .shop-now-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            transform: scale(1.05);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,102,255,0.3);
+            border: 2px solid var(--text-color);
+        }
+
+        .back-link:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .keyframe-container {
+                aspect-ratio: 1 / 1;
+                max-width: 100%;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .link-preview h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Find Me This</div>
+        </header>
+        
+        <div class="content-wrapper">
+            <div class="keyframe-container">
+                <a href="{{ tiktok_url }}" target="_blank">
+                    <img src="{{ frame_path }}" alt="TikTok Fashion Frame" class="keyframe">
+                </a>
+            </div>
+            
+            <div class="link-container">
+                {% for link in links %}
+                    <div class="link-preview">
+                        <h3>{{ link.split('q=')[-1].replace('+', ' ').title() }}</h3>
+                        <a href="{{ link }}" class="shop-now-btn" target="_blank">Shop Now</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <a href="/" class="back-link">Find More Styles</a>
+    </div>
+</body>
+</html>

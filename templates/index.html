@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Me This - TikTok Fashion Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0066FF;
+            --secondary-color: #00FF66;
+            --accent-color: #FF66FF;
+            --text-color: #FFFFFF;
+            --background-color: #000000;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 0 var(--primary-color);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .loading {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .loading-animation {
+            display: flex;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 10px;
+            animation: bounce 0.5s alternate infinite;
+        }
+
+        .dot1 { background-color: var(--primary-color); animation-delay: 0.2s; }
+        .dot2 { background-color: var(--secondary-color); animation-delay: 0.4s; }
+        .dot3 { background-color: var(--accent-color); animation-delay: 0.6s; }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Find Me This</div>
+        <form action="/" method="post" id="tiktokForm">
+            <label for="tiktok_url">Enter TikTok URL:</label>
+            <input type="text" id="tiktok_url" name="tiktok_url" required>
+            <button type="submit">Find Fashion</button>
+        </form>
+        <div class="loading" id="loadingAnimation">
+            <div class="loading-text">Finding fabulous fashion...</div>
+            <div class="loading-animation">
+                <div class="dot dot1"></div>
+                <div class="dot dot2"></div>
+                <div class="dot dot3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('tiktokForm').addEventListener('submit', function(e) {
+            document.getElementById('loadingAnimation').style.display = 'flex';
+        });
+    </script>
+</body>
+</html>
