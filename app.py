@@ -14,7 +14,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Set your OpenAI API key and instantiate the client
-openai_client = OpenAI(api_key="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")
+openai_client = OpenAI(api_key="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")
 
 rapidapi_key = "d0a12cd2a9msh53f7653581d62d0p1f2b5ejsn35b61c563e54"
 
